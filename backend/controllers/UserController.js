@@ -16,11 +16,19 @@ const generateToken = (id) => {
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
+<<<<<<< HEAD
+  // check if user exists
+  const user = await User.findOne({ email });
+
+  if (user) {
+    res.status(422).json({ errors: ["Por favor, utilize outro e-mail"] });
+=======
   //check if user exists
   const user = await User.findOne({ email });
 
   if (user) {
     res.status(422).json({ errors: ["Por favor, utilize outro e-mail."] });
+>>>>>>> ba0617452148fdc520a1ba06d3d9d530918ce6e3
     return;
   }
 
@@ -35,18 +43,27 @@ const register = async (req, res) => {
     password: passwordHash,
   });
 
+<<<<<<< HEAD
+  // If user was create successfully, return the token
+=======
   // If user was created successfully, return the token
+>>>>>>> ba0617452148fdc520a1ba06d3d9d530918ce6e3
   if (!newUser) {
     res
       .status(422)
       .json({ errors: ["Houve um erro, por favor tente mais tarde."] });
+<<<<<<< HEAD
+=======
     return;
+>>>>>>> ba0617452148fdc520a1ba06d3d9d530918ce6e3
   }
 
   res.status(201).json({
     _id: newUser._id,
     token: generateToken(newUser._id),
   });
+<<<<<<< HEAD
+=======
 };
 
 // Login user
@@ -73,6 +90,7 @@ const login = async (req, res) => {
     profileImage: user.profileImage,
     token: generateToken(user._id),
   });
+>>>>>>> ba0617452148fdc520a1ba06d3d9d530918ce6e3
 };
 
 module.exports = {
