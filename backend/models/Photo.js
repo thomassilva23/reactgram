@@ -10,9 +10,11 @@ const photoSchema = new Schema(
     userId: mongoose.ObjectId,
     userName: String,
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-const Photo = mongoose.model("Photo", photoSchema);
+Photo = mongoose.model("Photo", photoSchema);
 
 module.exports = Photo;
